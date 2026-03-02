@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>لعبة مخصوص للجين</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">lolo</div>
+        <div>
+          <div class="title">لجين تمكيج</div>
+          <!-- <div class="subtitle">محاكاة المكياج الاحترافية</div> -->
+        </div>
+      </div>
+      <div class="status" id="statusText">جاهز</div>
+      <div class="top-actions">
+        <button class="ghost" id="btnUndo">تراجع</button>
+        <button class="ghost" id="btnRedo">إعادة</button>
+        <button class="ghost" id="btnReset">إعادة ضبط</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <aside class="panel left">
+        <section class="panel-block">
+          <h3>الأدوات</h3>
+          <div id="toolGroups" class="tool-groups"></div>
+        </section>
+
+        <section class="panel-block">
+          <h3>الفرشاة</h3>
+          <div class="control">
+            <label for="brushSize">الحجم</label>
+            <input id="brushSize" type="range" min="4" max="120" value="36" />
+          </div>
+          <div class="control">
+            <label for="brushOpacity">الشفافية</label>
+            <input id="brushOpacity" type="range" min="0" max="1" step="0.01" value="0.65" />
+          </div>
+          <div class="control">
+            <label for="brushFlow">التدفق</label>
+            <input id="brushFlow" type="range" min="0" max="1" step="0.01" value="0.5" />
+          </div>
+          <div class="control">
+            <label for="brushSoftness">النعومة</label>
+            <input id="brushSoftness" type="range" min="0" max="1" step="0.01" value="0.7" />
+          </div>
+          <div class="toggle-row">
+            <button id="btnEraser" class="ghost">ممحاة</button>
+            <button id="btnClearLayer" class="ghost">مسح الطبقة</button>
+          </div>
+        </section>
+
+        <section class="panel-block">
+          <h3>أقلام المكياج</h3>
+          <div id="brushPresets" class="tool-buttons"></div>
+        </section>
+
+        <section class="panel-block">
+          <h3>لوحة الألوان</h3>
+          <div id="palette" class="palette"></div>
+        </section>
+
+        <section class="panel-block">
+          <h3>عدسات ملونة</h3>
+          <div id="lensPalette" class="palette small"></div>
+          <button id="btnApplyLens" class="primary">تطبيق العدسات</button>
+        </section>
+      </aside>
+
+      <main class="stage">
+        <div class="stage-header">
+          <div class="zoom-bar" id="zoomBar"></div>
+          <div class="compare">
+            <label for="compareSlider">قبل / بعد</label>
+            <input id="compareSlider" type="range" min="0" max="100" value="100" />
+          </div>
+        </div>
+
+        <div class="stage-canvas" id="stageCanvas">
+          <canvas id="beforeCanvas"></canvas>
+          <div id="afterClip">
+            <canvas id="afterCanvas"></canvas>
+          </div>
+          <canvas id="overlayCanvas"></canvas>
+        </div>
+
+        <div class="stage-footer">
+          <div class="action-bar">
+            <button id="btnSave" class="ghost">حفظ التصميم</button>
+            <label class="file-btn">
+              <input id="loadInput" type="file" accept="application/json" hidden />
+              تحميل التصميم
+            </label>
+            <button id="btnExport" class="ghost">تصدير PNG</button>
+          </div>
+        </div>
+      </main>
+
+      <aside class="panel right">
+        <section class="panel-block">
+          <h3>الطبقات</h3>
+          <div id="layersList" class="layers"></div>
+        </section>
+
+        <section class="panel-block">
+          <h3>المزج</h3>
+          <div class="control">
+            <label for="blendSelect">وضع المزج</label>
+            <select id="blendSelect"></select>
+          </div>
+          <div class="control">
+            <label for="layerOpacity">شفافية الطبقة</label>
+            <input id="layerOpacity" type="range" min="0" max="1" step="0.01" value="1" />
+          </div>
+        </section>
+
+      </aside>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
